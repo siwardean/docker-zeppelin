@@ -1,5 +1,4 @@
-FROM gettyimages/spark:latest
-
+FROM gettyimages/spark:2.4.0-hadoop-3.0
 # SciPy
 RUN set -ex \
  && buildDeps=' \
@@ -27,10 +26,13 @@ RUN set -ex \
 
 # Zeppelin
 ENV ZEPPELIN_PORT 8080
+#ENV ZEPPELIN_SSL_PORT 8443
 ENV ZEPPELIN_HOME /usr/zeppelin
 ENV ZEPPELIN_CONF_DIR $ZEPPELIN_HOME/conf
 ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
 ENV ZEPPELIN_COMMIT v0.8.2
+#EXPOSE $ZEPPELIN_PORT $ZEPPELIN_SSL_PORT 8443
+#EXPOSE 4040
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 RUN set -ex \
  && buildDeps=' \
@@ -73,5 +75,5 @@ RUN ln -s /usr/bin/pip3 /usr/bin/pip \
 
 ADD about.json $ZEPPELIN_NOTEBOOK_DIR/2BTRWA9EV/note.json
 WORKDIR $ZEPPELIN_HOME
-CMD ["bin/zeppelin.sh"]
+CMD ["bin/zeppelin-daemon.sh start"]
 

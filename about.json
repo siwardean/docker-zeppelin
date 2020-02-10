@@ -2,7 +2,8 @@
   "paragraphs": [
     {
       "text": "%sh\nenv | grep -E \"ZEPPELIN|SPARK|HADOOP\" | sort",
-      "dateUpdated": "Jul 31, 2016 6:58:33 PM",
+      "user": "anonymous",
+      "dateUpdated": "Sep 24, 2019 9:33:31 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -33,7 +34,8 @@
     },
     {
       "text": "%spark\nsc.version\nsc.master\nsc.appName\nsc.applicationId\nsc.jars\nsc.getConf.toDebugString\nsc.hadoopConfiguration",
-      "dateUpdated": "Jul 31, 2016 6:58:33 PM",
+      "user": "anonymous",
+      "dateUpdated": "Sep 24, 2019 9:36:14 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -56,15 +58,16 @@
       "jobName": "paragraph_1469169953418_1749723717",
       "id": "20160722-064553_1487295533",
       "dateCreated": "Jul 22, 2016 6:45:53 AM",
-      "dateStarted": "Jul 31, 2016 6:58:33 PM",
-      "dateFinished": "Jul 31, 2016 6:58:49 PM",
+      "dateStarted": "Sep 24, 2019 9:33:54 AM",
+      "dateFinished": "Sep 24, 2019 9:34:11 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python print(sys.version)",
-      "dateUpdated": "Jul 31, 2016 6:58:33 PM",
+      "user": "anonymous",
+      "dateUpdated": "Sep 24, 2019 9:36:54 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -95,6 +98,7 @@
     },
     {
       "text": "%sh pip list ",
+      "user": "anonymous",
       "dateUpdated": "Jul 31, 2016 6:58:33 PM",
       "config": {
         "colWidth": 12.0,
