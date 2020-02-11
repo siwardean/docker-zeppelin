@@ -41,6 +41,9 @@ RUN set -ex \
     nodejs \
     npm \
     openjdk-8-jdk \
+    libfontconfig \
+    r-base-dev \
+    r-cran-evaluate \
  ' \
  && apt-get update \
  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
@@ -62,18 +65,21 @@ RUN set -ex \
  && mv /usr/zeppelin* $ZEPPELIN_HOME \
  && mkdir -p $ZEPPELIN_HOME/logs \
  && mkdir -p $ZEPPELIN_HOME/run \
+ && cp $ZEPPELIN_CONF_DIR/shiro.ini.template $ZEPPELIN_CONF_DIR/shiro.ini \
+ && sed -i '119 s/^#//' $ZEPPELIN_CONF_DIR/shiro.ini \
+ && sed -i '120 s/^/#/' $ZEPPELIN_CONF_DIR/shiro.ini \
  && apt-get purge -y --auto-remove $buildDeps \
+ && apt-get install -y openjdk-8-jre \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /usr/src/zeppelin \
  && rm -rf /root/.m2 \
  && rm -rf /root/.npm \
  && rm -rf /root/.cache/bower \
- && rm -rf /tmp/*
+ && rm -rf /tmp/* 
 
 RUN ln -s /usr/bin/pip3 /usr/bin/pip \
  && ln -s /usr/bin/python3 /usr/bin/python
 
 ADD about.json $ZEPPELIN_NOTEBOOK_DIR/2BTRWA9EV/note.json
 WORKDIR $ZEPPELIN_HOME
-CMD ["bin/zeppelin-daemon.sh start"]
-
+CMD ["bin/zeppelin.sh"]
